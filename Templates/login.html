@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login - ConectaMe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>ConectaMe</h2>
+        <p class="subtitle">Acesse sua conta para continuar.</p>
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+
+        <p class="register-text">
+            Não tem conta? <a href="/register">Crie uma</a>
+        </p>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/ana-claudia-dos-santos-guedes-71b762196" target="_blank">🔗
+                LinkedIn</a>
+            <a href="https://github.com/anaclaudiaguedes1234-max" target="_blank">💻 GitHub</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

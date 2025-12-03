@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes - ConectaMe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='clientes.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-left">
+            <h1>ConectaMe</h1>
+            <p>Seus contatos e clientes organizados em um só lugar.</p>
+        </div>
+
+        <div class="header-right">
+            <div class="user-circle">
+                {{ current_user.email[0] | upper }}
+            </div>
+            <a class="btn btn-outline" href="/logout">Sair</a>
+        </div>
+    </div>
+
+    <!-- AÇÕES (BUSCA ESQUERDA + NOVO CLIENTE DIREITA) -->
+    <div class="actions-bar">
+        <form method="GET" action="/clientes">
+            <input
+                class="search"
+                type="text"
+                name="busca"
+                placeholder="Buscar..."
+                value="{{ busca if busca }}"
+            >
+        </form>
+
+        <a class="btn" href="/novo">+ Novo Cliente</a>
+    </div>
+
+    <!-- DASHBOARDZINHO DE STATUS -->
+    <div class="status-summary">
+        <div class="status-pill status-novo-pill">
+            Novo
+            <span class="pill-count">{{ contagem['Novo'] }}</span>
+        </div>
+        <div class="status-pill status-andamento-pill">
+            Em andamento
+            <span class="pill-count">{{ contagem['Em andamento'] }}</span>
+        </div>
+        <div class="status-pill status-fechado-pill">
+            Fechado
+            <span class="pill-count">{{ contagem['Fechado'] }}</span>
+        </div>
+        <div class="status-pill status-perdido-pill">
+            Perdido
+            <span class="pill-count">{{ contagem['Perdido'] }}</span>
+        </div>
+        <div class="status-total">
+            Total: {{ total_clientes }}
+        </div>
+    </div>
+
+    <!-- ALERTAS DE LEMBRETE -->
+    {% set hoje = datetime.utcnow().strftime('%Y-%m-%d') %}
+    {% for cliente in clientes %}
+        {% if cliente.lembrete == hoje %}
+            <div class="alert">
+                🔔 Lembrete para hoje: {{ cliente.nome }} - {{ cliente.empresa }}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <!-- LISTAGEM DE CARDS -->
+    <div class="grid">
+    {% for cliente in clientes %}
+        {% set status = cliente.status or 'Novo' %}
+        <div class="card">
+            <div>
+                <h2>{{ cliente.nome }}</h2>
+                <p>Email: {{ cliente.email }}</p>
+                <p>Empresa: {{ cliente.empresa }}</p>
+                <p>Telefone: {{ cliente.telefone }}</p>
+
+                <div class="status-row">
+                    <span class="status-label">Status:</span>
+                    {% if status == 'Novo' %}
+                        <span class="status-tag status-novo">{{ status }}</span>
+                    {% elif status == 'Em andamento' %}
+                        <span class="status-tag status-andamento">{{ status }}</span>
+                    {% elif status == 'Fechado' %}
+                        <span class="status-tag status-fechado">{{ status }}</span>
+                    {% elif status == 'Perdido' %}
+                        <span class="status-tag status-perdido">{{ status }}</span>
+                    {% else %}
+                        <span class="status-tag status-novo">{{ status }}</span>
+                    {% endif %}
+                </div>
+
+                <p>Obs: {{ cliente.observacao }}</p>
+            </div>
+
+            <div class="card-actions">
+                <a class="btn btn-small" href="/editar/{{ cliente.id }}">Editar</a>
+                <a
+                    class="btn btn-small btn-outline"
+                    href="/excluir/{{ cliente.id }}"
+                    onclick="return confirm('Excluir cliente?')"
+                >
+                    Excluir
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>

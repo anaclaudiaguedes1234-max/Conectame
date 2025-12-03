@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='editar.css') }}">
+</head>
+<body>
+
+<div class="box">
+    <h2>Editar Cliente</h2>
+    <form action="/atualizar/{{ cliente.id }}" method="POST">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" value="{{ cliente.nome }}" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" value="{{ cliente.email }}" required>
+
+        <label for="telefone">Telefone</label>
+        <input id="telefone" name="telefone" value="{{ cliente.telefone }}">
+
+        <label for="empresa">Empresa</label>
+        <input id="empresa" name="empresa" value="{{ cliente.empresa }}">
+
+        <label for="status">Status</label>
+        <select id="status" name="status">
+            <option value="Novo" {% if cliente.status == 'Novo' %}selected{% endif %}>Novo</option>
+            <option value="Em andamento" {% if cliente.status == 'Em andamento' %}selected{% endif %}>Em andamento</option>
+            <option value="Fechado" {% if cliente.status == 'Fechado' %}selected{% endif %}>Fechado</option>
+            <option value="Perdido" {% if cliente.status == 'Perdido' %}selected{% endif %}>Perdido</option>
+        </select>
+
+        <label for="observacao">Observação</label>
+        <textarea id="observacao" name="observacao">{{ cliente.observacao }}</textarea>
+
+        <label for="lembrete">Lembrete</label>
+        <input
+            id="lembrete"
+            type="date"
+            name="lembrete"
+            value="{{ cliente.lembrete }}"
+        >
+
+        <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <a href="/clientes">⬅ Voltar para clientes</a>
+</div>
+
+</body>
+</html>

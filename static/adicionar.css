@@ -1,0 +1,64 @@
+body {
+    background: #0d0a14;
+    color: #fff;
+    font-family: Poppins, sans-serif;
+    padding: 20px;
+}
+
+.box {
+    max-width: 450px;
+    background: #1a1226;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+    background: #2a1e3a;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* SELECT com a mesma cara dos inputs */
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+    background: #2a1e3a;
+    color: #fff;
+    font-size: 14px;
+}
+
+textarea {
+    height: 90px;
+    resize: none;
+}
+
+label {
+    font-size: 13px;
+    color: #c4b4e9;
+}
+
+button {
+    background: #7a2dfd;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #9b5bff;
+}

@@ -1,0 +1,73 @@
+body {
+    background: #0d0a14;
+    color: #fff;
+    font-family: Poppins, sans-serif;
+    padding: 20px;
+}
+
+.box {
+    max-width: 400px;
+    background: #1a1226;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 5px;
+    border: none;
+    font-family: Poppins, sans-serif;
+    background: #2a1e3a;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* SELECT igual os outros campos */
+select {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 5px;
+    border: none;
+    font-family: Poppins, sans-serif;
+    background: #2a1e3a;
+    color: #fff;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+label {
+    font-size: 13px;
+    color: #c4b4e9;
+}
+
+button {
+    background: #7a2dfd;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #9b5bff;
+}
+
+a {
+    display: block;
+    margin-top: 10px;
+    color: #7a2dfd;
+    text-align: center;
+    text-decoration: none;
+}
